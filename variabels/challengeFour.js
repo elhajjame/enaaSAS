@@ -12,5 +12,5 @@ let mod = a % b;
 console.log(`${a} + ${b} = ${addition}`);
 console.log(`${a} - ${b} = ${sub}`);
 console.log(`${a} x ${b} = ${multi}`);
+console.log(`${a} / ${b} = ${div}`);
 console.log(`${a} % ${b} = ${mod}`);
-

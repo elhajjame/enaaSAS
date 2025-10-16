@@ -1,19 +1,27 @@
-/*
-    Challenge 3: Search in an Array
-Write a program that asks the user to enter 8 integers, then another number to search for.
-The program should indicate whether the number is present and at which position.
-*/
+const prompt = require('prompt-sync')()
 
-let i, arr=[];
+let arr = [], i = 0, found = 0;
 
-const prompt = require('prompt-sync')();
-let size = Number(prompt("enter the size of the array : "));
 
-if(size < 8 || size > 8) {console.log("invalid size please enter 8 elements!"); }
-
-for(i = 1; i <= size; i++){
-    if(size == 8){
-    let element = prompt(`enter the element ${i}: `);
+while(arr.length < 8){
+    const element = Number(prompt("enter the elemnt: "))
     arr.push(element);
+    i++;
+}
+
+const search = Number(prompt("search for :  "));
+
+i = 0;
+while(i < arr.length ){
+
+    if( arr[i] === search){
+    console.log(`the element : ${arr[i]} is exist in the index ${i}`);
+        found = 1;
+        break;
     }
+
+    i++;
+}
+if(found == 0){
+    console.log("the element not found !")
 }

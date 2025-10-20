@@ -1,7 +1,6 @@
 //Create an object entreprise that contains an adresse object (street, city, postalCode).Display the city.
 
 const entreprise = {
-    nome: "charika dajaj",
     adresse : {street: "mohammed 6", city: "beni mellal", codePostal: 23000}
 };
 console.log(entreprise.adresse.city);

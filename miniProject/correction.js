@@ -1,4 +1,8 @@
+//function input(numberOne, numberTwo){
+   // let numberOne = Number( prompt("enter number one: "));
+    //let numberTwo = Number( prompt("enter number two: "));
 
+   // return (numberOne, numberTwo);
 
 function addition(numberOne, numberTwo) {
     let result = numberOne + numberTwo;

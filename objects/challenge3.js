@@ -19,10 +19,21 @@ resulte += produits[i].price * produits[i].quantity
 console.log(resulte)
 
 // In an employees array, find all those who have a salary > 3000.
-// Create a function clone(obj) that returns a copy of the given object
 
 const employees = [{name : "mojhamed", salary : 1000 },
-                {name : "ali", salary : 455},
+                {name : "ali", salary : 3500},
                 {name : "aziz", salary  : 500 }]
 
+ for(let i = 0; i < employees.length; i++){
+    if(employees[i].salary > 3000){
+        console.log(employees [i].name);
+    }
+ }               
 
+// Create a function clone(obj) that returns a copy of the given object
+
+const student =[{name : "mousa", grade : 14, class: "a"}, {name : "nabil", grade : 3, class: "b"}, {name : "said", grade : 19, class: "c"}];
+
+let cloneStudent = [...student] // u can use {} instead [] if u want to show numbers 
+
+console.log(cloneStudent)

@@ -5,8 +5,8 @@ function add (){
 
     let taskSize = prompt("how many task you want to add? ")
 for(let i = 0; i < taskSize; i++){
-    let taskName = prompt("enter the task name: ");
-    let taskDescription = prompt("enter the task description: ");    
+    let taskName = prompt(`enter the task name No ${i+1}: `);
+    let taskDescription = prompt(`enter the task description No ${i+1}: `);    
 
     const objTask ={
     id : task.length + 1,
@@ -53,27 +53,26 @@ function search (){
 }
 
 function update (){
-    let uptask = prompt("enter the name of the task: ");
+    let uptask = prompt("enter the id of the task: ");
     let found = false;
 
     for(let i = 0; i < task.length; i++){
-        if(uptask == task[i].name){
+        if(uptask == task[i].id){
             console.log(`** ${task[i]} description : ${task[i].description}`);
 
         let newTask = prompt("the new task: ");
         task[i].name = newTask;
 
-        let newDescription = prompt("the new task: ");
+        let newDescription = prompt("the new description: ");
         task[i].description = newDescription;
         
-        console.log("Book updated successfully!");
+        console.log("task updated successfully!");
 
         found = true;
         break;
         }
         if (!found) {
             console.log("The task was not found!");}
-
     }
 
 }
@@ -87,11 +86,17 @@ function complatePending  (){
 }
 
 function Delete(){
-    let del = prompt("enter the task to delete: ");
+
+    if(task.length == 0){
+        console.log("the task list still empty");
+        return;
+    }
+
+    let del = Number(prompt("enter the id task that you want to delete: "));
     let found = false;
 
     for(let i = 0; i < task.length; i++){
-        if(del == task[i]){
+        if(del == task[i].id){
             task.splice(i, 1);
               console.log("Task deleted successfully!");
             found = true;
@@ -144,7 +149,7 @@ while(true){
             case "5":               
                 Delete ();
                     break;
-            case "4":
+            case "6":
                 complatePending()
                     break;                                                  
         }

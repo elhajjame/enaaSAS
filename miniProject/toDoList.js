@@ -4,9 +4,9 @@ let task = [];
 function add (){
 
     let taskSize = prompt("how many task you want to add? ")
-for(let i = 0; i < taskSize; i++){
-    let taskName = prompt(`enter the task name No ${i+1}: `);
-    let taskDescription = prompt(`enter the task description No ${i+1}: `);    
+    for(let i = 0; i < taskSize; i++){
+        let taskName = prompt(`enter the task name No ${i+1}: `);
+        let taskDescription = prompt(`enter the task description No ${i+1}: `);    
 
     const objTask ={
     id : task.length + 1,
@@ -27,20 +27,20 @@ function display (){
 for(let i = 0; i < task.length; i++){
    dis = task [i] 
 
-   console.log(dis)
+    console.log(`${dis.id} : ${dis.name}-- description : ${dis.description}`);
 }
 }
 
 function search (){
     console.log("================================================================\n");
-        let taskSearch = Number(prompt("search on task by id: "));
+        let taskSearch = prompt("search on task by name: ");
     console.log("================================================================\n");
 
     let found = false;
     for(let i = 0; i <  task.length; i++){
-        if(taskSearch == task[i].id){
+        if(taskSearch == task[i].name){
         console.log("================================================================\n");
-            console.log(task[i]);
+            console.log(`id:  ${task[i].id} :task name:   ${task[i].name}-- description :   ${task[i].description}`);
         console.log("================================================================\n");
         
             found = true;
@@ -48,7 +48,7 @@ function search (){
         }
     }
     if (!found) {
-    console.log("Task with this id not found!");
+    console.log("task not found!");
     }
 }
 
@@ -74,7 +74,6 @@ function update (){
         if (!found) {
             console.log("The task was not found!");}
     }
-
 }
 
 function complatePending  (){
@@ -151,6 +150,7 @@ while(true){
                     break;
             case "6":
                 complatePending()
-                    break;                                                  
+                    break;    
+            default : console.log("please choose from the menu");                                             
         }
     }

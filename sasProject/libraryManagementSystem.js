@@ -8,7 +8,7 @@ function addOneBook() {
     let bookAuthor = prompt("enter the Author of the book: ");
 
     let bookPublication = prompt("Publication year: ");
-    const objBook = { id: book.length + 1, title: bookTitle, author: bookAuthor, year: bookPublication, availibl: false, };
+    const objBook = { id: book.length + 1, title: bookTitle, author: bookAuthor, year: bookPublication, availibl: true, };
     book.push(objBook)
 }
 
@@ -118,12 +118,46 @@ function createAcc() {
 
 function memberDispaly() {
     if (subscr.length == 0) {
-        console.log("atill no members added yet!")
+        console.log(" No subscribers found. Would you like to subscribe? (yes/no) ");
+        const choice = prompt("");
+        if (choice == "yes") {
+            createAcc();
+        } else return;
     }
     for (let i = 0; i < subscr.length; i++) {
         let dispMembers = subscr[i];
+        console.log("\n=== List of Subscribers ===");
         console.log(`member id : ${dispMembers.id}, first name: ${dispMembers.firstName}, last name: ${dispMembers.lastName}, e-mail: ${dispMembers.email}`);
     }
+}
+
+//////////////////////// loan Management///////////////////////////
+
+function loan() {
+    let member;
+    let findbook;
+    let memberId = prompt("enter you member id: ");
+    let bookid = prompt("enter the book id: ");
+
+    for (let i = 0; i < subscr.length; i++) {
+        if (memberId == subscr[i].id) {
+            member = subscr[i];
+            break;
+        }
+    }
+    if (!member) {
+        console.log("member not found!");
+
+    } else console.log("member: ", member);
+
+    for (let j = 0; j < book.length; j++) {
+        if (bookid == book[j].id) {
+            findbook = book[j];
+        }
+    }
+    if (!findbook) {
+        console.log("book not found!");
+    } else console.log("book: ", findbook);
 }
 
 function subMenu() {
@@ -234,10 +268,11 @@ function mainMenu() {
                 break;
 
             case "5":
-
+                loan()
                 break;
         }
     }
 };
 
 mainMenu();
+

@@ -84,8 +84,10 @@ const fruits = [{name : "appel", color: "green", calorise : 80},
 //fruits.pop(1,2)
 //console.log(fruits);
 
-//      --------------------------- foreach ------------------------------------
+//      --------------------------- sort() ------------------------------------
 
 
 
-
+const book = {
+    
+}

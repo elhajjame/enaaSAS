@@ -1,0 +1,103 @@
+SAS Brief: Library Management
+Project Context
+
+The municipal library of Beni-Mellal wants to modernize its book and subscriber management system.
+It has reached out to the startup DigitalGear, where you work as developers, to design a console application in JavaScript.
+
+The application will manage books, subscribers, and borrowings.
+Users (librarians) will be able to add, search, and sort books, manage subscribers, and record borrowings/returns.
+
+Objective
+
+Create a JavaScript application to manage a library, allowing tracking of books, subscribers, and borrowings.
+The application must include an interactive menu that lets the user choose which operation to perform.
+
+Expected Features
+
+Main Menu
+
+Add a Book
+
+Attributes: Id_livre, Title, Author, Publication Year, Available (yes/no).
+
+Add Multiple Books
+
+Book Operations
+
+Display all books
+
+Sort books by title (ascending/descending)
+
+Sort books by publication year
+
+Display only available books
+
+Search for a book by Id_livre
+
+Subscriber Management
+
+Add a subscriber (ID, Last Name, First Name, Email)
+
+Display all subscribers
+
+Borrowing Management
+
+Record a borrowing (a subscriber borrows an available book → the book becomes “unavailable”)
+
+Record a return (the book becomes “available” again)
+
+Display books borrowed by a specific subscriber
+
+Exit the Application
+
+Note:
+After each operation, the user must return to the main menu.
+
+Example Data Structures
+let livres = [
+  { id_livre: "123", titre: "Le Petit Prince", auteur: "Saint-Exupéry", annee: 1943, disponible: true },
+  { id_livre: "456", titre: "L'Étranger", auteur: "Camus", annee: 1942, disponible: true }
+];
+
+let abonnes = [
+  { id: 1, nom: "Dupont", prenom: "Alice", email: "alice@mail.com" }
+];
+
+let emprunts = [
+  { abonneId: 1, id_livre: "123", dateEmprunt: "2025-09-22" }
+];
+
+Educational Guidelines
+
+Type of work: Individual
+
+Start date: 22/10/2025 at 10:00 AM
+
+Submission deadline: 23/10/2025 before 2:00 PM
+
+Deliverables
+
+Presentation support (Canva or PowerPoint)
+Example: SAS presentation
+
+Source code of the application (GitHub link)
+
+Evaluation Method
+
+Total duration: 20 minutes, organized as follows:
+
+Project presentation and demo: 5 minutes
+
+Code review: 5 minutes (explain code organization and logic)
+
+Practical scenario: 10 minutes (questions or requested modifications)
+
+Performance Criteria
+
+Complete functionalities: The app must fully manage books, subscribers, and borrowings.
+
+User-friendly interface: Even as a console app, it should be easy and pleasant to use.
+
+Code quality: Follow good JavaScript programming practices.
+
+Ensure your code is clean, modular, and well-organized.

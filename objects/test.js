@@ -88,6 +88,19 @@ const fruits = [{name : "appel", color: "green", calorise : 80},
 
 
 
-const book = {
-    
-}
+const book = ["mehdi", "hajj", " hamoid", " amin", "barhim" ]
+book.sort()
+console.log(book)
+
+const num = [12,3,55,6,2,8,4]
+num.sort((a, b) => a-b);
+console.log(num)
+
+const peapol =[{name: "mehdi", age : 24, gpg: 121},
+               {name: "ali",   age :10, gpg: 21},
+               {name: "spongbob", age : 4, gpg: 11}, 
+               {name: "sendy", age : 32, gpg: 1213}];
+
+peapol.sort((a,b) => a.age - b.age)               
+
+console.log(peapol)

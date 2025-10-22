@@ -30,7 +30,11 @@ function add() {
 function display() {
 
     if (book.length == 0) {
-        console.log("empty library ");
+        console.log("the library is empty.\n");
+        const addChoose = prompt("would you like to add book (yes / no) : ");
+        if (addChoose == "yes") {
+            addOneBook();
+        } else return;
     }
     for (let i = 0; i < book.length; i++) {
         disp = book[i];
@@ -40,7 +44,25 @@ function display() {
 }
 
 function SortByTitle() {
-    book.objBook.sort((a, b) => a.title.localeCompare(b.title));
+
+    console.log("================== sort menu==================");
+    console.log("1- sort ascending (A - Z).");
+    console.log("2- sort descending (Z - A).");
+    const sortInput = prompt("choose from the menu: ");
+    if (book.length == 0) {
+        console.log("the library is empty.");
+        const addChoose = prompt("would you like to add book (yes / no) : ");
+        if (addChoose == "yes") {
+            addOneBook();
+        } else return;
+    }
+    else if (sortInput == 1) {
+        book.sort((a, b) => a.title.localeCompare(b.title))
+        console.log(book);
+    } else if (sortInput == 2) {
+        book.sort((a, b) => b.title.localeCompare(a.title))
+        console.log(book);
+    } else return;
 }
 
 function sortByYear() {
@@ -50,7 +72,11 @@ function sortByYear() {
 
 function onlyAvailable() {
     if (book.length == 0) {
-        console.log("the library still empty!");
+        console.log("the library is empty!");
+        const addChoose = prompt("would you like to add book (yes / no) : ");
+        if (addChoose == "yes") {
+            addOneBook();
+        }
     }
     for (let i = 0; i < book.length; i++) {
         if (book[i].availibl == true) {
@@ -62,14 +88,18 @@ function onlyAvailable() {
 
 function saerch() {
     if (book.length == 0) {
-        console.log("the library still empty !");
+        console.log("the library is empty !");
+        const addChoose = prompt("would you like to add book (yes / no) : ");
+        if (addChoose == "yes") {
+            addOneBook();
+        }
     }
     let saerchById = prompt("search on the the book by id:");
 
     let found = false;
     for (let i = 0; i < book.length; i++) {
         if (saerchById == book[i].id) {
-              console.log(`id:  ${book[i].id},  book title:   ${book[i].title}, author :   ${book[i].author}  Publication year : ${book[i].year}, availibl: ${book[i].disponible}`);
+            console.log(`id:  ${book[i].id},  book title:   ${book[i].title}, author :   ${book[i].author}  Publication year : ${book[i].year}, availibl: ${book[i].disponible}`);
             found = true;
         }
     }
@@ -77,13 +107,23 @@ function saerch() {
 
 ///////////////////////////// Subscriber Management function ///////////////////////////////////
 
-function subscriber() {
-    const firstName = prompt("first name : ");
-    const lastName = prompt("last name : ");
-    const email = prompt("e-mail : ");
+function createAcc() {
+    let firstName = prompt("first name : ");
+    let lastName = prompt("last name : ");
+    let memberMial = prompt("e-mail : ");
 
-    sub = { id: subscr.length + 1, name: firstName, last: lastName, email: subemail };
+    const sub = { id: subscr.length + 1, firstName: firstName, lastName: lastName, email: memberMial };
     subscr.push(sub);
+}
+
+function memberDispaly() {
+    if (subscr.length == 0) {
+        console.log("atill no members added yet!")
+    }
+    for (let i = 0; i < subscr.length; i++) {
+        let dispMembers = subscr[i];
+        console.log(`member id : ${dispMembers.id}, first name: ${dispMembers.firstName}, last name: ${dispMembers.lastName}, e-mail: ${dispMembers.email}`);
+    }
 }
 
 function subMenu() {
@@ -120,12 +160,37 @@ function subMenu() {
                 break;
 
             case "5":
-                 saerch()
+                saerch()
                 break;
         }
     }
 };
+//////////////////////// member menu//////////////////////////
+function membersMenu() {
+    while (true) {
+        console.log("====================== subscriber menu ======================\n");
+        console.log("1- create an account : ");
+        console.log("2- display all members : ");
+        console.log("0- back to the main menu.")
 
+        const subinput = prompt("choose an number: ");
+
+        if (subinput == 0) {
+            break;
+        }
+
+        switch (subinput) {
+            case "1":
+                createAcc();
+                break;
+
+            case "2":
+                memberDispaly()
+                break;
+        }
+    }
+}
+/////////////////////////////main menu///////////////////////////////////
 function mainMenu() {
     while (true) {
 
@@ -165,7 +230,7 @@ function mainMenu() {
                 break;
 
             case "4":
-                subscriber();
+                membersMenu();
                 break;
 
             case "5":

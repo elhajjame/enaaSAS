@@ -9,7 +9,7 @@ function addOneBook() {
     let bookAuthor = prompt("enter the Author of the book: ");
 
     let bookPublication = Number(prompt("Publication year: "));
-    const objBook = { id: book.length + 1, title: bookTitle, author: bookAuthor, year: bookPublication, availible: true, };
+    const objBook = { id: book.length + 1, title: bookTitle, author: bookAuthor, year: bookPublication, available: true, };
     book.push(objBook)
 }
 
@@ -23,7 +23,7 @@ function add() {
         let bookAuthor = prompt("enter the Author of the book: ");
         let bookPublication = Number(prompt("Publication year: "));
 
-        const objBook = { id: book.length + 1, title: bookTitle, author: bookAuthor, year: bookPublication, availible: true, };
+        const objBook = { id: book.length + 1, title: bookTitle, author: bookAuthor, year: bookPublication, available: true, };
         book.push(objBook);
     }
 }
@@ -39,7 +39,7 @@ function display() {
     }
     for (let i = 0; i < book.length; i++) {
         disp = book[i];
-        console.log(`book id : ${disp.id},  book title:  ${disp.title}, book author: ${disp.author},  Publication year : ${disp.year}, availibl: ${disp.availible}`);
+        console.log(`book id : ${disp.id},  book title:  ${disp.title}, book author: ${disp.author},  Publication year : ${disp.year}, availibl: ${disp.available}`);
     }
 
 }
@@ -80,15 +80,16 @@ function onlyAvailable() {
             addOneBook();
         }
     }
+    
     for (let i = 0; i < book.length; i++) {
-        if (book[i].availible == true) {
+        if (book[i].available == true) {
             onlyDispo = book[i];
-            console.log(`book id : ${onlyDispo.id},  book title:  ${onlyDispo.title}, book author: ${onlyDispo.author},  Publication year : ${onlyDispo.year}, availibl: ${onlyDispo.availible}`);
+            console.log(`book id : ${onlyDispo.id},  book title:  ${onlyDispo.title}, book author: ${onlyDispo.author},  Publication year : ${onlyDispo.year}, availibl: ${onlyDispo.available}`);
         }
     }
 }
 
-function saerch() {
+function search() {
     if (book.length == 0) {
         console.log("the library is empty !");
         const addChoose = prompt("would you like to add book (yes / no) : ");
@@ -96,12 +97,12 @@ function saerch() {
             addOneBook();
         }
     }
-    let saerchById = prompt("search on the the book by id:");
+    let saerchById = prompt("saerch on the the book by id:");
 
     let found = false;
     for (let i = 0; i < book.length; i++) {
         if (saerchById == book[i].id) {
-            console.log(`id:  ${book[i].id},  book title:   ${book[i].title}, author :   ${book[i].author}  Publication year : ${book[i].year}, availibl: ${book[i].disponible}`);
+            console.log(`id:  ${book[i].id},  book title:   ${book[i].title}, author :   ${book[i].author}  Publication year : ${book[i].year}, availibl: ${book[i].available}`);
             found = true;
         }
     }
@@ -126,9 +127,9 @@ function memberDispaly() {
             createAcc();
         } else return;
     }
+    console.log("\n=== List of Subscribers ===");
     for (let i = 0; i < subscr.length; i++) {
         let dispMembers = subscr[i];
-        console.log("\n=== List of Subscribers ===");
         console.log(`member id : ${dispMembers.id}, first name: ${dispMembers.firstName}, last name: ${dispMembers.lastName}, e-mail: ${dispMembers.email}`);
     }
 }
@@ -138,8 +139,8 @@ function memberDispaly() {
 function loan() {
     let member;
     let findbook;
-    let memberId = prompt("enter you member id: ");
-    let bookid = prompt("enter the book id: ");
+    let memberId = Number(prompt("enter you member id: "));
+    let bookid = Number(prompt("enter the book id: "));
     let loanDate = prompt("enter the date: ")
 
     for (let i = 0; i < subscr.length; i++) {
@@ -191,21 +192,20 @@ function mainMenu() {
 
         const input = prompt("choose from the menu : ");
 
-        if (input == 0) {
-            console.log("do you want to quite y/n: ");
+        if (input == "0") {
+            console.log("do you want to quit (yes / no): ");
             const quite = prompt("")
-            if (quite == "y") {
+            if (quite == "yes") {
                 console.log("goodbye!")
                 break;
             } else continue;
         }
 
-
         switch (input) {
             case "1":
                 addOneBook();
-
                 break;
+
             case "2":
                 add();
                 break;
@@ -222,6 +222,7 @@ function mainMenu() {
             case "5":
                 loan()
                 break;
+            default: console.log("invalid input, please choose from the menu.");
         }
     }
 };
@@ -233,12 +234,12 @@ function subMenu() {
         console.log("2- Sort books by title (ascending/descending).");
         console.log("3- Sort books by publication year.");
         console.log("4- Display only available books.");
-        console.log("5- Search for a book by Id.");
+        console.log("5- saerch for a book by Id.");
         console.log("0- back to the main menu.");
 
         const menuInput = prompt("choose from the menu : ");
 
-        if (menuInput == 0) {
+        if (menuInput == "0") {
             break;
         }
 
@@ -260,8 +261,9 @@ function subMenu() {
                 break;
 
             case "5":
-                saerch()
+                search()
                 break;
+            default: console.log("invalid input, please choose from the menu.");
         }
     }
 };
@@ -276,7 +278,7 @@ function membersMenu() {
 
         const subinput = prompt("choose an number: ");
 
-        if (subinput == 0) {
+        if (subinput == "0") {
             break;
         }
 
@@ -288,10 +290,10 @@ function membersMenu() {
             case "2":
                 memberDispaly()
                 break;
+            default: console.log("invalid input, please choose from the menu.");
         }
     }
 }
 
 
 mainMenu();
-
